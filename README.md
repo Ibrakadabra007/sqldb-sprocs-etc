@@ -1,1 +1,0 @@
-# sqldb-sprocs-etc
