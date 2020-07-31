@@ -1,12 +1,16 @@
+Use master
+GO
+
+----search for all tables.cols with the predicate below
 Select top 100 * from INFORMATION_SCHEMA.COLUMNS
 where COLUMN_NAME like('%order%') order by COLUMN_NAME desc
 
-
+--------------------------------------------------------------------
 
 Use WebAPIConsumer
 GO
 
-
+----fetch mock Ids,Names with the relevant roles
 SELECT TOP (1000) [Id]
       ,[Name]
   FROM [WebAPIConsumer].[dbo].[AspNetRoles] where Id IN (
@@ -27,41 +31,36 @@ SELECT TOP (1000) [Id]
 )
 
 
-select * from [WebAPIConsumer].[dbo].[AspNetUsers]
-
+select * from [dbo].[AspNetUsers]
 
 select u.Email as 'User', ur.UserId, ur.RoleId, r.Name as 'Privs' from [WebAPIConsumer].[dbo].[AspNetUserRoles] ur
-	inner join WebAPIConsumer.dbo.AspNetRoles r
+	inner join dbo.AspNetRoles r
 		on r.Id = ur.RoleId
-	inner join WebAPIConsumer.dbo.AspNetUsers u
+	inner join dbo.AspNetUsers u
 		on u.Id = ur.UserId
 where UserId IN('0317f08a-8fc7-46db-bfe1-ddf****')
 
 
-
-  --Id									Email
---1c1034a6-7edf-48f0-94ed-9a58689f6399	Todd@mmm.net
---0317f08a-8fc7-46db-bfe1-ddfdffad3bd0	salesforce@mmm.com
-
-
-
-
 --Missing these 2 Roles for SalesForce [ ApiConsumerProfiles :  "Salesforce	Integration" ]
 --***NOT the Issue- compared to PROD***
---Id	Name
---8abe6fe5-6f30-41c9-bb90-5f04c0fd15ad	UpdateClientAccount
---7de1023a-2f03-45ec-83cf-f21925f7666e	Maintenance
+
+/*
+----sample guids to test with---------------------------------------
+--	Id					Name
+--	8abe6fe5-6f30-41c9-bb90-5f04c0fd15ad	UpdateClientAccount
+--	7de1023a-2f03-45ec-83cf-f21925f7666e	Maintenance
+*/
 
 
 
-----[From dba]----
+----[From dba]------------------------------------------------------
 
 /*
               a. 10 = update successful
               b. 11 = update successful, new data
               c. 12 = zero records updated, new data
               d. 13 = not a owner hospital
-              e. 14 = record doesn’t exists in hospital
+              e. 14 = record doesnâ€™t exists in hospital
               f. 15 = error
               g. 16 = zero records updated, no data
               h. 55 = error (messageinterface cannot be found)
@@ -87,7 +86,7 @@ inner join Client.Client c
 on c.ClientID = lnk.ClientID
 where l.StatusCode in (1,2,10,12,13,14,16,55)
 order by c.CreateDate desc;
-
+--------------------------------------------------------------
 
 select * from sys.transmission_queue with (nolock)
 order by enqueue_time desc;
