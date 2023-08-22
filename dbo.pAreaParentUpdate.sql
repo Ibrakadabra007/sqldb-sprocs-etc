@@ -3,10 +3,10 @@ CREATE PROCEDURE dbo.pAreaParentUpdate
 	@areaParentID			int,		
 	@childAreaID			int,
 	@parentAreaID			int,  	
-	@startdate				date, 
-	@enddate				date = NULL,
+	@startdate			date, 
+	@enddate			date = NULL,
 	-- outputs		
-	@changeDate				datetime	OUTPUT	
+	@changeDate			datetime	OUTPUT	
 )    
 AS
 BEGIN
@@ -28,9 +28,9 @@ BEGIN
 		IF @@ROWCOUNT = 0
 		BEGIN
 			--Set Default values
-			DECLARE	@id				varchar(40)		= CONVERT(varchar(40), @areaParentID),			
+			DECLARE	@id				varchar(40)	= CONVERT(varchar(40), @areaParentID),			
 					@errMsg			varchar(100)	= '',
-					@errState			int			= 0;		
+					@errState			int	= 0;		
 							
 			SELECT 
 				@id
