@@ -280,14 +280,14 @@ select * from [dbo].[Subscription]
 --		   )
 --GO
 
---Audit
+----audit
 
 --CardTypeCode   Description
 ------------------------------
 
---1				Visa
---2				MasterCard
---3				Discovery
+--1			Visa
+--2			MasterCard
+--3			Discovery
 --4`			Amex
 
 
