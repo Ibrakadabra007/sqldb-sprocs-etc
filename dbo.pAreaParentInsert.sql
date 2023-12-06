@@ -2,11 +2,11 @@ CREATE PROCEDURE dbo.pAreaParentInsert
 (		
 	@childAreaID			int,
 	@parentAreaID			int,
-	@startdate				date,
-	@enddate				date = NULL,
+	@startdate			date,
+	@enddate			date = NULL,
 	-- outputs
-	@areaParentID			int			OUTPUT,
-	@changeDate				datetime	OUTPUT	
+	@areaParentID			int	  OUTPUT,
+	@changeDate			datetime  OUTPUT	
 )
 
 AS
@@ -39,17 +39,17 @@ BEGIN
 		);
 
 		-- NOTE:	-Can't get Change/Create info from @OutTable because the trigger on this table 
-		--			 may change values after the OUTPUT clause is processed.		
+		--		 may change values after the OUTPUT clause is processed.		
 		SELECT TOP (1) @areaParentID = ID, @changeDate = ChangeDate
 		FROM Global.AreaParent  AS ap 
 		INNER JOIN	@IDTable AS id
-			ON	id.ID = ap.AreaParentID;
+		ON	id.ID = ap.AreaParentID;
 
     END TRY
 
     BEGIN CATCH
 		EXEC RethrowError;
-	END CATCH;
+    END CATCH;
 
 END;
 
