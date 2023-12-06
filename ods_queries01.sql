@@ -19,7 +19,7 @@ SELECT TOP (1000) [Id]
 '0e26e4db-e8be-4bae-ac6b-2d813ed64d64'
 )
 
-
+--audit
 select * from [dbo].[AspNetUsers]
 
 select u.Email as 'User', ur.UserId, ur.RoleId, r.Name as 'Privs' from [WebAPIConsumer].[dbo].[AspNetUserRoles] ur
@@ -80,7 +80,8 @@ order by c.CreateDate desc;
 select * from sys.transmission_queue with (nolock)
 order by enqueue_time desc;
 
-
+--ex) uutput
+-------------
 ----Succeeded (10); MessageLogID = 126 on 02/12/2019
 --<root>
 --  <messageMetadata messageInterfaceID="1228" messageRecipient="source" orignateServerName="DEVXXX" isCheckConcurrency="0" />
