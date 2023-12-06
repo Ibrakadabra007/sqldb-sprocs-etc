@@ -1,12 +1,12 @@
 CREATE PROCEDURE dbo.pAreaParentUpdate
 (
-	@areaParentID			int,		
-	@childAreaID			int,
-	@parentAreaID			int,  	
-	@startdate			date, 
-	@enddate			date = NULL,
+	@areaParentID		int,		
+	@childAreaID		int,
+	@parentAreaID		int,  	
+	@startdate		date, 
+	@enddate		date = NULL,
 	-- outputs		
-	@changeDate			datetime	OUTPUT	
+	@changeDate		datetime  OUTPUT
 )    
 AS
 BEGIN
@@ -23,14 +23,14 @@ BEGIN
 			StartDate = @startdate,
 			EndDate = @enddate
 		WHERE 
-			AreaParentID = @areaParentID AND ChangeDate	= @changeDate;
+			AreaParentID = @areaParentID AND ChangeDate = @changeDate;
 
 		IF @@ROWCOUNT = 0
 		BEGIN
 			--Set Default values
-			DECLARE	@id				varchar(40)	= CONVERT(varchar(40), @areaParentID),			
-					@errMsg			varchar(100)	= '',
-					@errState			int	= 0;		
+			DECLARE	@id	   varchar(40) = CONVERT(varchar(40), @areaParentID),			
+				@errMsg	   varchar(100)	= '',
+				@errState   int	= 0;		
 							
 			SELECT 
 				@id
@@ -42,12 +42,12 @@ BEGIN
 			IF @id IS NULL
 				BEGIN
 					SELECT	@errMsg = 'No AreaParentID exists for ID: %s%s',
-							@errState = 3
+						@errState = 3
 				END
 			ELSE
 				BEGIN
 					SELECT	@errMsg = 'AreaParentID: %s was updated at %s',
-							@errState = 2							
+						@errState = 2							
 				END
 				
 			RAISERROR(@errMsg, 16, @errState, @id);		
