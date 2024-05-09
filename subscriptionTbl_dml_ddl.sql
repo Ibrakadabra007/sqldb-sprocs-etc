@@ -145,7 +145,7 @@ INSERT INTO [dbo].[Subscription]
            ,'Upland'
            ,'CA'
            ,'91786'
-           ,'klas.campbell@banfield.com'
+           ,'kalama.jones@gmail.com'
            ,'0'
            ,'0'
            ,'9.69'
@@ -171,7 +171,7 @@ select * from [dbo].[Subscription]
 --			--	
 --			--
 --			--OtherSubTotal	SalesTax	ShippingName	ShippingAddress	ShippingCity	ShippingState	ShippingZip	
---			--17.99			1.71		Sandy Antillon	klas.campbell@banfield.net		
+--			--17.99			1.71		Sandy Antillon	kalama.jones@gmail.net		
 
 
 			--Email		ShippingAndHandling		ShippingTax	OrderTotal	IsVerified	CreateApplicationID	CreateUser	CreateDate		ChangeApplicationID	ChangeUser	ChangeDate
